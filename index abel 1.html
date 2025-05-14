@@ -1,78 +1,108 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Belajar HTML dan CSS</title>
-  <link rel="stylesheet" href="style.css">
+<html lang="id">
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Koppee - Kopi Terbaik</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="jarak">
-      <h2>BELAJAR MEMBUAT LAYOUT DENGAN HTML & CSS</h2>
-    </div>
-  </div>
-
-  <!-- Menu -->
-  <div class="menu">
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Koppee</div>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#hero">Beranda</a></li>
+      <li><a href="#about">Tentang Kami</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+      <li><button id="loginBtn">Login</button></li>
     </ul>
-  </div>
+  </nav>
 
-  <!-- Content -->
-  <div class="content">
-    <div class="jarak">
-      
-      <!-- Kiri -->
-      <div class="kiri">
-        <!-- Blog 1 -->
-        <div class="border">
-          <div class="jarak">
-            <h3>Lorem Ipsum</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
-               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, [...]</p>
-            <button class="btn">Read More ..</button>
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Selamat Datang di Koppee</h1>
+    <p>Kopi spesial untuk setiap momen hidup Anda.</p>
+  </section>
 
-        <!-- Blog 2 -->
-        <div class="border">
-          <div class="jarak">
-            <h3>Lorem Ipsum</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
-               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, [...]</p>
-            <button class="btn">Read More ..</button>
-          </div>
-        </div>
+  <!-- Tentang Kami -->
+  <section id="about">
+    <h2>Tentang Kami</h2>
+    <p>Koppee adalah kedai kopi yang berdedikasi menyajikan kopi terbaik dari biji kopi pilihan petani lokal Indonesia.</p>
+  </section>
+
+  <!-- Produk -->
+  <section id="produk">
+    <h2>Produk Unggulan</h2>
+    <div class="produk-list">
+      <div class="produk-item">
+        <img src="https://source.unsplash.com/300x200/?coffee" alt="kopi 1" />
+        <h3>Kopi Arabika</h3>
+        <p>Lembut dan sedikit asam, cocok untuk pecinta kopi klasik.</p>
       </div>
-
-      <!-- Kanan -->
-      <div class="kanan">
-        <div class="jarak">
-          <h3>CATEGORY</h3>
-          <hr>
-          <p><a href="#" class="undecor">HTML</a></p>
-          <p><a href="#" class="undecor">CSS</a></p>
-          <p><a href="#" class="undecor">BOOTSTRAP</a></p>
-          <p><a href="#" class="undecor">PHP</a></p>
-          <p><a href="#" class="undecor">MYSQL</a></p>
-          <p><a href="#" class="undecor">JQuery</a></p>
-          <p><a href="#" class="undecor">Ajax</a></p>
-        </div>
+      <div class="produk-item">
+        <img src="https://source.unsplash.com/301x200/?coffee" alt="kopi 2" />
+        <h3>Kopi Robusta</h3>
+        <p>Kaya rasa dan penuh energi, pilihan tepat untuk pagi Anda.</p>
       </div>
+    </div>
+  </section>
 
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p><strong>T: Apakah Koppee menerima pesanan online?</strong><br>A: Ya, Anda bisa memesan melalui aplikasi kami.</p>
+    <p><strong>T: Di mana lokasi kedai Koppee?</strong><br>A: Kami berada di Yogyakarta, dan akan segera hadir di kota Anda!</p>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak">
+    <h2>Kontak Kami</h2>
+    <p>Email: support@koppee.id</p>
+    <p>WhatsApp: +62 812-3456-7890</p>
+  </section>
+
+  <!-- Login Form Popup -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Masuk</button>
+      </form>
     </div>
   </div>
 
   <!-- Footer -->
-  <div class="footer">
-    <div class="jarak">
-      <p>copyright 2025 Delayota all reserved</p>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2025 Koppee. Semua Hak Dilindungi.</p>
+    <p><a href="#">Kebijakan Privasi</a></p>
+  </footer>
+
+<script>
+  const modal = document.getElementById("loginModal");
+  const loginBtn = document.getElementById("loginBtn");
+  const closeModal = document.getElementById("closeModal");
+  const loginForm = document.getElementById("loginForm");
+
+  loginBtn.onclick = () => modal.classList.remove("hidden");
+  closeModal.onclick = () => modal.classList.add("hidden");
+
+  loginForm.onsubmit = (e) => {
+    e.preventDefault();
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (user && pass) {
+      alert("Login berhasil. Selamat datang, " + user + "!");
+      modal.classList.add("hidden");
+    } else {
+      alert("Mohon isi username dan password!");
+    }
+  };
+</script>
+
 </body>
 </html>
